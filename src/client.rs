@@ -7,6 +7,7 @@ use crate::management::{
     LoadModelResponse, UnloadModelResponse, LocalModelsResponse
 };
 
+#[derive(Clone)]
 pub struct OpenArcClient {
     base_url: String,
     api_key: String,
@@ -31,6 +32,14 @@ impl OpenArcClient {
             api_key: api_key.to_string(),
             http_client,
         }
+    }
+
+    pub(crate) fn base_url(&self) -> &str {
+        &self.base_url
+    }
+
+    pub(crate) fn http(&self) -> &Client {
+        &self.http_client
     }
 
     pub async fn get_version(&self) -> Result<VersionResponse, OpenArcError> {

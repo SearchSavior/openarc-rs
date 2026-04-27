@@ -9,12 +9,20 @@ pub enum ModelStatusEnum {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-#[serde(rename_all = "lowercase")]
+#[serde(rename_all = "snake_case")]
 pub enum ModelType {
     Llm,
     Vlm,
     Whisper,
+    #[serde(rename = "qwen3_asr")]
+    Qwen3Asr,
     Kokoro,
+    #[serde(rename = "qwen3_tts_custom_voice")]
+    Qwen3TtsCustomVoice,
+    #[serde(rename = "qwen3_tts_voice_design")]
+    Qwen3TtsVoiceDesign,
+    #[serde(rename = "qwen3_tts_voice_clone")]
+    Qwen3TtsVoiceClone,
     Emb,
     Rerank,
 }
